@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Log entries (<a href='/'>stock</a>)</h2>
+    <ul>
+        {% for entry in object_list %}
+            <li>{{ entry.time }} {{ entry.stuff.name }}: {{ entry.quant }} {{ entry.isabs }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}

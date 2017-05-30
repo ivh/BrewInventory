@@ -12,6 +12,8 @@ class Stuff(Model):
     quant = IntegerField(default=0)
     catg = ForeignKey(Category)
     lastmod = DateTimeField('last modified', auto_now=True)
+    class Meta:
+        ordering = ["-quant"]
     def __str__(self):
         return self.name
 
