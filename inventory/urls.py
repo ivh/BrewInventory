@@ -2,7 +2,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^inv/', include('keepstuff.urls')),
+    url(r'', include('keepstuff.urls')),
     url(r'^admin/', admin.site.urls),
 ]
 

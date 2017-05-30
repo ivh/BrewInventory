@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>Current Stuff</h2>
+    <ul>
+        {% for stuff in object_list %}
+            <li>({{ stuff.catg.name }}) {{ stuff.name }}: {{ stuff.quant }}{{ stuff.unit }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
