@@ -4,7 +4,7 @@
     <h2>Current Stuff (<a href='/recalc'>calc</a>, <a href='/log'>log</a>, <a href='/admin/keepstuff/entry/add/'>new entry</a>)</h2>
     <ul>
         {% for stuff in object_list %}
-            <li>({{ stuff.catg.name }}) {{ stuff.name }}: {{ stuff.quant }}{{ stuff.unit }}</li>
+            <li>({{ stuff.catg.name }}) <b>{{ stuff.name }}</b>: {{ stuff.quant }}{{ stuff.unit }}</li>
         {% endfor %}
     </ul>
 {% endblock %}
