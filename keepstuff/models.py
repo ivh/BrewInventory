@@ -2,9 +2,11 @@ from django.db.models import *
 
 class Category(Model):
     name = CharField(max_length=200)
+    class Meta:
+        ordering = ["name"]
     def __str__(self):
         return self.name
-    
+
 
 class Stuff(Model):
     name = CharField(max_length=200)
@@ -13,7 +15,7 @@ class Stuff(Model):
     catg = ForeignKey(Category)
     lastmod = DateTimeField('last modified', auto_now=True)
     class Meta:
-        ordering = ["-quant"]
+        ordering = ["catg", "-quant"]
     def __str__(self):
         return self.name
 
