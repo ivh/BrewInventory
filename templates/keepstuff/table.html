@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% load render_table from django_tables2 %}
+
+{% block content %}
+    <h2>Current Stuff (<a href='/recalc'>calc</a>, <a href='/log'>log</a>, <a href='/admin/keepstuff/entry/add/'>new entry</a>)</h2>
+
+    {% render_table table %}
+
+{% endblock %}

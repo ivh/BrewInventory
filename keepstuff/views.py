@@ -1,8 +1,14 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views.generic import ListView, DetailView
+from django_tables2 import RequestConfig
 from datetime import datetime
 from .models import *
+
+def stuff(request):
+    table = StuffTable(Stuff.objects.all().exclude(quant=0))
+    RequestConfig(request).configure(table)
+    return render(request, 'keepstuff/table.html', {'table': table})
 
 class CurrentStuff(ListView):
     model = Stuff

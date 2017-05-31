@@ -1,4 +1,5 @@
 from django.db.models import *
+import django_tables2 as tables
 
 class Category(Model):
     name = CharField(max_length=200)
@@ -14,6 +15,9 @@ class Stuff(Model):
     quant = IntegerField(default=0)
     catg = ForeignKey(Category)
     lastmod = DateTimeField('last modified', auto_now=True)
+    @property
+    def howmuch(self):
+        return '{} {}'.format(self.quant, self.unit)
     class Meta:
         ordering = ["catg", "-quant"]
     def __str__(self):
@@ -29,4 +33,15 @@ class Entry(Model):
         ordering = ["-time"]
     def __str__(self):
         return "%s, %s %s, %s"%(self.stuff.name, self.quant, 'abs' if self.isabs else '', self.time)
+
+
+class StuffTable(tables.Table):
+    howmuch = tables.Column(order_by=('quant',))
+    class Meta:
+        model = Stuff
+        fields = ('catg','name','howmuch')
+        sequence = ('catg','name','howmuch')
+        # add class="paleblue" to <table> tag
+        #attrs = {'class': 'paleblue'}
+
 
